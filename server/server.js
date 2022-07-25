@@ -1,5 +1,7 @@
 const express = require('express');
 const httpLogger = require('./middleware/http-logger.js');
+const PING_PONG = require('./middleware/ping-pong.js');
+
 const app = express();
 
 /* USE MIDDLEWARE */
@@ -7,6 +9,10 @@ app.use(httpLogger());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+/* PING:PONG */
+app.use(PING_PONG);
+
+/* ROUTER */
 
 /* LISTENER AND EXPORTS */
 function listener(port) {
