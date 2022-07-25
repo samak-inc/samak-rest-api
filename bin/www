@@ -1,0 +1,7 @@
+const server = require('../server/server.js');
+
+const SERVER_PORT = 3000;
+
+server(SERVER_PORT).then(({ app, port }) => {
+	console.log(`[SERVER] : listening on port ${port}`);
+});
