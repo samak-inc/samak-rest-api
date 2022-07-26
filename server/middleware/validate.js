@@ -4,13 +4,13 @@
  */
 function validate(schema) {
 	return function (req, res, next) {
-		let _res = schema.safeParse(req.body);
+		let $res = schema.safeParse(req.body);
 
-		if (!_res.success) {
-			return res.status(400).send({ message: _res.error });
+		if (!$res.success) {
+			return res.status(400).send({ message: $res.error });
 		}
 
-		req.$validation.data = _res.data;
+		req.$valid = $res.data;
 		return next();
 	};
 }
