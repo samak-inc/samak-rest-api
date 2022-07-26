@@ -4,7 +4,9 @@
 	"description": "the E-Commerce Finance API",
 	"main": "./bin/www",
 	"scripts": {
-		"prisma:build": "prisma generate --schema=./server/model/schema.prisma",
+		"prisma:pull": "prisma pull db",
+		"prisma:build": "prisma generate",
+		"prisma:studio": "npm run prisma:build && prisma studio",
 		"serve": "nodemon ./bin/www",
 		"start": "node ./bin/www",
 		"test": "jest"
