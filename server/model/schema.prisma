@@ -9,3 +9,53 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+
+model User {
+  id         Int        @id @default(autoincrement())
+  name       String
+  email      String     @unique
+  userType   UserType   @relation(references: [id], fields: [userTypeId])
+  userTypeId Int
+  createdAt  DateTime   @default(now())
+  UserRole   UserRole[]
+  Role       Role?      @relation(fields: [roleId], references: [id])
+  roleId     Int?
+}
+
+model UserRole {
+  id     Int  @id @default(autoincrement())
+  role   Role @relation(fields: [roleId], references: [id])
+  roleId Int
+  user   User @relation(fields: [userId], references: [id])
+  userId Int
+}
+
+// NOTE : ONLY     = Customer | Employee
+// NOTE : Employee = Employee | Employer
+// NOTE : maybe    = SUPERSUER | BOTHUSER
+model UserType {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+  User User[]
+}
+
+model EmployeeRole {
+  id           Int        @id @default(autoincrement())
+  name         String
+  departmentId Int
+  department   Department @relation(fields: [departmentId], references: [id])
+}
+
+model Role {
+  id       Int        @id @default(autoincrement())
+  name     String
+  User     User[]
+  UserRole UserRole[]
+}
+
+model Department {
+  id           Int            @id @default(autoincrement())
+  name         String
+  EmployeeRole EmployeeRole[]
+}
