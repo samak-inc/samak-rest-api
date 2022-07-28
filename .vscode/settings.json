@@ -19,7 +19,9 @@
 		".gitignore": true,
 		".prettierrc": true,
 		"http.log": true,
-		"package.json": true
+		"package.json": true,
+		"LICENSE": true,
+		"README.md": true
 	},
 	"explorerExclude.backup": null
 }
