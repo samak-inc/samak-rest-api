@@ -1,0 +1,64 @@
+{
+	"openapi": "3.1.0",
+	"info": {
+		"title": "Samak REST API",
+		"summary": "Samak REST API",
+		"description": "Samak REST API",
+		"termsOfService": "http://localhost:3000/terms/",
+		"concat": {
+			"name": "miko-github",
+			"url": "https://github.com/miko-github",
+			"email": "mikoloism.github@gmail.com"
+		},
+		"license": {
+			"name": "MIT",
+			"identifier": "MIT",
+			"url": "https://github.com/samak-inc/samak-rest-api/blob/master/LICENSE"
+		},
+		"version": "1.0.0"
+	},
+	"servers": {
+		"url": "http://localhost:{SERVER_PORT}",
+		"description": "Development localhost",
+		"variables": {
+			"SERVER_PORT": {
+				"default": "3000",
+				"enum": ["3000", "80", "8080", "5000"]
+			}
+		}
+	},
+	"paths": {
+		"/ping": {
+			"get": {
+				"description": "Returns PONG message to test the Server connection",
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/PING_Response"
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"components": {
+		"schemas": {
+			"PING_Response": {
+				"type": "object",
+				"properties": {
+					"message": {
+						"type": "string",
+						"default": "PONG",
+						"enum": ["PONG"]
+					}
+				}
+			}
+		}
+	},
+	"tags": {}
+}
