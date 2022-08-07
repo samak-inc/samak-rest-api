@@ -4,6 +4,9 @@ const fs = require('fs');
 
 const HTTP_LOG_FORMAT =
 	':method :url :status - [:date[web]] [:response-time ms] [:total-time ms]';
+// TODO : use root directory as first slice of filePath
+// TODO : using /server/config/log/http.log as filePath
+// TODO : or /config/log/http.log
 const HTTP_LOG_FILE_PATH = path.resolve(__dirname, '..', '..', 'http.log');
 
 const customToken = {
